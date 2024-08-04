@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Notes App</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <nav
+            class="navbar is-primary"
+            role="navigation"
+            aria-label="main navigation"
+        >
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <strong>Notes App</strong>
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a
+                            href="/oauth2/authorization/auth0"
+                            class="button is-light"
+                        >
+                            <strong>Login</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section">
+            <div class="container">
+                <h1 class="title">Welcome to Notes App</h1>
+                <p class="subtitle">Please login to access your notes.</p>
+                <a href="/oauth2/authorization/auth0" class="button is-primary">
+                    Login with Auth0
+                </a>
+            </div>
+        </section>
+    </body>
+</html>

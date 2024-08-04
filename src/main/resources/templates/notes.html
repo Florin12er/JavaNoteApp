@@ -1,0 +1,140 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>My Notes</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <nav
+            class="navbar is-primary"
+            role="navigation"
+            aria-label="main navigation"
+        >
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/notes">
+                    <strong>My Notes</strong>
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a href="/logout" class="button is-light">
+                            <strong>Logout</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section">
+            <div class="container">
+                <h1 class="title">
+                    Welcome, <span th:text="${username}"></span>!
+                </h1>
+
+                <!-- Add note form -->
+                <div class="box">
+                    <h2 class="title is-4">Add New Note</h2>
+                    <form id="addNoteForm">
+                        <div class="field">
+                            <div class="control">
+                                <textarea
+                                    name="content"
+                                    class="textarea"
+                                    placeholder="Enter your note"
+                                ></textarea>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">
+                                    Add Note
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Notes list -->
+                <div id="notesList" class="columns is-multiline mt-5">
+                    <div
+                        th:each="note : ${notes}"
+                        th:id="'note-' + ${note.id}"
+                        class="column is-one-third"
+                    >
+                        <div class="card">
+                            <div class="card-content">
+                                <p
+                                    th:text="${note.content}"
+                                    class="content"
+                                ></p>
+                            </div>
+                            <footer class="card-footer">
+                                <a
+                                    href="#"
+                                    class="card-footer-item"
+                                    th:onclick="'editNote(' + ${note.id} + ')'"
+                                >
+                                    <span class="icon"
+                                        ><i class="fas fa-edit"></i
+                                    ></span>
+                                    <span>Edit</span>
+                                </a>
+                                <a
+                                    href="#"
+                                    class="card-footer-item"
+                                    th:onclick="'deleteNote(' + ${note.id} + ')'"
+                                >
+                                    <span class="icon"
+                                        ><i class="fas fa-trash-alt"></i
+                                    ></span>
+                                    <span>Delete</span>
+                                </a>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edit Note Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Edit Note</p>
+                    <button
+                        class="delete"
+                        aria-label="close"
+                        onclick="closeEditModal()"
+                    ></button>
+                </header>
+                <section class="modal-card-body">
+                    <textarea id="editNoteContent" class="textarea"></textarea>
+                </section>
+                <footer class="modal-card-foot">
+                    <button
+                        id="updateNoteButton"
+                        class="button is-success"
+                        onclick="updateNote()"
+                    >
+                        Save changes
+                    </button>
+                    <button class="button" onclick="closeEditModal()">
+                        Cancel
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <script src="/js/notes.js"></script>
+    </body>
+</html>
