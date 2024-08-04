@@ -3,6 +3,9 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
+RUN ls -l /app/target  # List the contents of the target directory for debugging
+
+# Stage 2: Create the final image
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
