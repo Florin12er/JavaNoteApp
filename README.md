@@ -66,3 +66,27 @@ SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET=your_google_clie
 SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENT_ID=your_github_client_id
 SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENT_SECRET=your_github_client_secret
 ```
+
+## Running the Application
+
+### Clone the repository:
+
+```bash
+text
+git clone https://github.com/your-repo/notes-app.git
+cd notes-app
+```
+
+### Build the Docker image:
+
+```bash
+docker build -t notes-app .
+```
+
+### Run the Docker container:
+
+```bash
+docker run -p 8080:8080 --env-file .env notes-app
+```
+
+## Open your browser and go to http://localhost:8080.
