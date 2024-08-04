@@ -46,7 +46,7 @@ public class SecurityConfig {
         SimpleUrlLogoutSuccessHandler successHandler =
             new SimpleUrlLogoutSuccessHandler();
         successHandler.setDefaultTargetUrl(
-            "https://dev-esfjsl3sz0115t5s.us.auth0.com/v2/logout?client_id=2x04udSdM6QZ8BP9kIdduTtQaQ62mGcC&returnTo=http://localhost:8080"
+            "https://dev-esfjsl3sz0115t5s.us.auth0.com/v2/logout?client_id=2x04udSdM6QZ8BP9kIdduTtQaQ62mGcC&returnTo=https:https://javanoteapp-9795.onrender.com"
         );
         return successHandler;
     }
